@@ -1,0 +1,11 @@
+#find min and max in list using rec
+def find_min_max(index,nums):
+    if index == len(nums)-1:
+        return nums[index] , nums[index]
+    mini,maxi = find_min_max(index + 1,nums)
+    min_val = nums[index] if nums[index] < mini else mini
+    max_val = nums[index] if nums[index] > maxi else maxi
+    return min_val,max_val
+nums  = [1,2,3,4]
+min , max = find_min_max(0,nums)
+print(f"min is {min} \nmax is {max}")
