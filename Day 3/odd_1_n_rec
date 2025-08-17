@@ -1,0 +1,9 @@
+#odd from 1 to n
+def rec(n):
+    if n < 0:
+        return
+    
+    rec(n - 2)
+    print(n,end = " ")
+n = 11
+rec(n-1 if n % 2 == 0 else n)
