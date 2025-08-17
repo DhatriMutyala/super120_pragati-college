@@ -1,0 +1,10 @@
+#palindrome using rec
+a = "madam"
+def palindrome_rec(left,a,right):
+    if left >= right:
+        return "palindrome"
+    if a[left] != a[right]:
+        return "not a palindrome"
+    return palindrome_rec(left+1, a , right-1)
+res = palindrome_rec(0,a,len(a)-1)
+print(res)
