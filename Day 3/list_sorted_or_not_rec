@@ -1,0 +1,8 @@
+#check if list is sorted or not
+nums = [7,6,5,4]
+def is_sort_rec(index,nums):
+    if index == len(nums) - 1:
+        return True
+    return (nums[index] < nums[index + 1] and is_sort_rec(index+1 , nums))
+res = is_sort_rec(0,nums)
+print(res)
