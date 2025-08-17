@@ -1,0 +1,8 @@
+#sum of list using rec
+def sumoflistrec(index,nums,n):
+    if index == n:
+        return 0
+    return nums[index] + sumoflistrec(index + 1, nums, n)
+nums = [2,5,1,7]
+res = sumoflistrec(0, nums, len(nums))
+print(res)
