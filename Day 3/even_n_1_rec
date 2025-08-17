@@ -1,0 +1,9 @@
+# even n to 1 
+def recursion(n):
+    if n < 0:
+        return
+    if n % 2 == 0:
+        print(n,end = " ")
+    recursion(n - 1)
+n = 10
+recursion(n)
