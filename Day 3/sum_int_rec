@@ -1,0 +1,8 @@
+# sum of given integer using rec
+n = 9999
+def sumofint(n):
+    if n < 10:
+        return n
+    return n%10 + sumofint(n // 10)
+res = sumofint(n)
+print(res)
