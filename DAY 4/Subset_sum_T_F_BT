@@ -1,0 +1,21 @@
+#subset sum returning true or false
+nums=[2,3,5,7]
+target = 10
+
+def subset(nums,target):
+    nums.sort(reverse=True) #ordering
+    def backtrack(start,path,subsum):
+        if subsum == target: #constraints
+            return True
+        for i in range(start,len(nums)):
+            if subsum + nums[i] > target: #pruning->it is avoiding remaining branches which are greater than target
+                continue
+            if  backtrack(i + 1,path,subsum + nums[i]):
+                return True
+
+    if backtrack(0,[],0):
+         return True
+    else:
+         return False
+ans = subset(nums,target)
+print(ans)
