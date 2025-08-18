@@ -1,0 +1,21 @@
+#subset sum using BT
+nums=[2,3,5,7]
+target = 10
+
+def subset(nums,target):
+    nums.sort(reverse=True) #ordering
+    res = []
+    def backtrack(start,path,subsum):
+        if subsum == target: #constraints
+            res.append(path.copy())
+            return
+        for i in range(start,len(nums)):
+            if subsum + nums[i] > target: #pruning->it is avoiding remaining branches which are greater than target
+                continue
+            path.append(nums[i])
+            backtrack(i + 1,path,subsum + nums[i])
+            path.pop()
+    backtrack(0,[],0)
+    return res
+ans = subset(nums,target)
+print(ans)
