@@ -1,0 +1,23 @@
+# 3-Way Partition Quick Sort
+arr = [12,14,9,8,5,9,14,12]
+
+def _3way_partition(start,end,arr):
+    if start < end:
+        pivot = arr[end]
+        lp = start
+        i = start
+        hp = end
+        while i <= hp:
+            if arr[i] > pivot:
+                arr[i],arr[hp] = arr[hp],arr[i]
+                hp -= 1
+            elif arr[i] < pivot:
+                arr[i],arr[lp] = arr[lp],arr[i]
+                lp += 1
+                i += 1
+            else:
+                i += 1
+        _3way_partition(start,lp-1,arr)
+        _3way_partition(hp+1,end,arr)
+_3way_partition(0,len(arr)-1,arr)
+print(arr)#pivot value does not change
