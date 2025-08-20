@@ -1,0 +1,25 @@
+# find kth smallest element using quick sort
+arr = [6,5,4]
+k = 3
+def partition(start,end,arr):
+    i = start
+    pivot = arr[end]
+    for j in range(start,end):
+        if arr[j] < pivot:
+            arr[i],arr[j] = arr[j],arr[i]
+            i += 1
+    arr[i],arr[end] = arr[end],arr[i]
+    return i
+
+def find_k_smallest(start,end,arr,k):
+    if start <= end:
+        partition_index = partition(start,end,arr)
+        if partition_index + 1 == k: #+1 is for index,k starts from 1..
+            return arr[partition_index]
+        elif partition_index + 1 < k:
+            return find_k_smallest(partition_index+1,end,arr,k)
+        else:
+            return find_k_smallest(start,partition_index-1,arr,k)
+
+res = find_k_smallest(0,len(arr) - 1,arr,k)
+print(res)
