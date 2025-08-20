@@ -1,0 +1,19 @@
+#lomuto quick sort
+arr = [18,45,17,93,25]
+
+def partition(s,e,arr):
+    pivot = arr[e]
+    i = s
+    for j in range(s,e):
+        if arr[j] < pivot:
+            arr[i] , arr[j] = arr[j],arr[i]
+            i+=1
+    arr[i],arr[e] = arr[e],arr[i]
+    return i #for partioning the list we return i
+def quick_sort_lomuto(start,end,arr):
+    if start < end:
+        pivot_location = partition(start,end,arr)
+        quick_sort_lomuto(start,pivot_location-1,arr)
+        quick_sort_lomuto(pivot_location+1,end,arr)
+quick_sort_lomuto(0,len(arr) -1,arr)
+print(arr)
