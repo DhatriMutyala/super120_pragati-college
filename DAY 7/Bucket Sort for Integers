@@ -1,0 +1,18 @@
+# bucket sort function for integers
+def bucket(arr):
+    n = len(arr)
+    bucket_list = [[] for i in range(n)]
+    mn = min(arr)
+    mx = max(arr)
+    for val in arr:
+        index = ((val - mn) * n) // ((mx - mn)+1) # +1 is used if out of range valu comes then we can use this +1 to insert it in last index
+        bucket_list[index].append(val)
+        for  sublist in bucket_list:
+            if len(sublist) > 1:
+                sublist.sort()
+    res = []
+    for i in bucket_list:
+        res.extend(i)
+    print(res)
+arr=[99,45,19,10]
+bucket(arr)
