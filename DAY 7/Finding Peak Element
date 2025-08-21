@@ -1,0 +1,31 @@
+#finding peak
+def peak(nums):
+    l = 0
+    r = len(nums) - 1
+    while l < r:
+        mid = (l+r) // 2
+        if nums[mid] > nums[mid + 1]:
+            res = nums[mid]
+            r = mid
+        else:
+            l = mid + 1
+    return res
+nums = [2,8,7]
+print(peak(nums))
+
+
+#finding peak
+def peak(nums):
+    l = 0
+    r = len(nums) - 1
+    while l < r:
+        mid = (l+r) // 2
+        if nums[mid] > nums[mid + 1]:
+
+            r = mid
+        else:
+            l = mid + 1
+    return nums[l]
+nums = [2,8,7]
+print(peak(nums))
+
