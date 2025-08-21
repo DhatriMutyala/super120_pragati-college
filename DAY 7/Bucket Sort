@@ -1,0 +1,16 @@
+# bucket sort 
+def bucket(arr):
+    n = len(arr)
+    bucket_list = [[] for i in range(n)]
+    for val in arr:
+        index = int(val * n)
+        bucket_list[index].append(val)
+        for  sublist in bucket_list:
+            if len(sublist) > 1:
+                sublist.sort()
+    res = []
+    for i in bucket_list:
+        res.extend(i)
+    print(res)
+arr=[0.34,0.45,0.24,0.50,0.87,0.98]
+bucket(arr)
