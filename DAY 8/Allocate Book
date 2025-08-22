@@ -1,0 +1,30 @@
+#allocate book return minimum of maximum sums
+books = [12,34,67,90]
+students = 2
+def allocate_books(books,students):
+    n = len(books)
+    if  n < students:
+        return -1
+    mn,mx = books[-1],sum(books)
+    l , r = mn , mx
+    ans = mx
+    while l <= r:
+        mid = (l + r) // 2
+        if checker(mid,books,students):
+            ans = mid
+            r = mid - 1
+        else:
+            l = mid + 1
+    return ans
+def checker(max_capacity,books,students):
+    cur_student,cur_capacity = 1 , books[0]
+    for book in books[1:]:
+        if book + cur_capacity > max_capacity:
+            cur_student += 1
+            cur_capacity = book
+            if cur_student > students:
+                return False
+        else:
+            cur_capacity += book
+    return True
+print(allocate_books(books,students))
