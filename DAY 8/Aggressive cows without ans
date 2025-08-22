@@ -1,0 +1,29 @@
+#Agressive cows without ans variable
+house = [1,2,4,8,9]
+cows = 3
+def aggressive_cows(house,cows):
+    house.sort()
+    l = 0
+    r = house[-1] - house[0]
+    ans = 0
+    while l < r:
+        mid = (l + r + 1) // 2
+        if checker(house,cows,mid):
+
+            l = mid 
+        else:
+            r = mid - 1
+    return l
+def checker(house,cows,max_distance):
+    cow = 1
+    last_cow = house[0]
+    for distance in house[1:]:
+        if distance - last_cow >= max_distance:
+            cow += 1
+            last_cow = distance
+            if cow >= cows:
+                return True
+    return False
+print(aggressive_cows(house,cows))
+
+
