@@ -1,0 +1,15 @@
+# Best time to buy and sell stock
+def maxProfit(prices):
+    b = 0
+    s = 1
+    max_val = 0
+    while s < len(prices):
+        if prices[b] < prices[s]:
+            profit = prices[s] - prices[b]
+            max_val = max(max_val, profit)
+        else:
+            b = s
+        s += 1
+    return max_val
+prices = [7,1,5,3,6,4]
+print(maxProfit(prices))
