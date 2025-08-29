@@ -1,0 +1,10 @@
+# contains duplicates using Hash map
+def duplicates(nums):
+    s = set()
+    for i in range(len(nums)):
+        if nums[i] in s:
+            return True
+        s.add(nums[i])
+    return False
+nums = [2,7,11,15]
+print(duplicates(nums))
