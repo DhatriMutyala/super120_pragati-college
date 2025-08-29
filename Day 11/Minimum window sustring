@@ -1,0 +1,31 @@
+# minimum window sustring
+def minWindow(s,t):
+    count_s, count_t = {}, {}
+    for i in t:
+        count_t[i] = count_t.get(i, 0) + 1
+
+    i = 0
+    found, total = 0, len(count_t)
+    res, len_res = [-1, -1], float('inf')
+    for j in range(len(s)):
+        cur_val = s[j]
+        count_s[cur_val] = count_s.get(cur_val, 0) + 1
+
+        if cur_val in count_t and count_t[cur_val] == count_s[cur_val]:
+            found += 1
+
+        while found == total:
+            if ((j - i) + 1) < len_res:
+                len_res = ((j - i) + 1)
+                res = [i, j]
+            count_s[s[i]] -= 1
+            if s[i] in count_t and count_s[s[i]] < count_t[s[i]]:
+                found -= 1
+            i += 1
+    i, j = res
+    return s[i:j + 1] if len_res != float('inf') else ""
+s = "ADOBECODEBANC"
+t = "ABC"
+print(minWindow(s,t))
+
+
