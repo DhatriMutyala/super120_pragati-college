@@ -1,0 +1,17 @@
+#implementation of Monotonic Next Maximum Stack
+
+a = [2,1,2,4,3]
+
+def next_greater(a):
+    stack = []
+    res = [-1] * len(a)
+    for i,num in enumerate(a):
+        while stack and  a[stack[-1]] < num:
+              index = stack.pop()
+              res[index] = num
+        stack.append(i)
+    return res
+
+
+
+print(next_greater(a))
