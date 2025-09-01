@@ -1,0 +1,14 @@
+# sub array sum equals k (560)
+def subarraySum(nums,k):
+     res = 0
+     cur_sum = 0
+     hashing = {0:1}
+     for n in nums:
+         cur_sum += n
+         rem = cur_sum - k
+         res += hashing.get(rem, 0)
+         hashing[cur_sum] = 1 + hashing.get(cur_sum, 0)
+     return res
+nums = [1,1,1]
+k = 2
+print(subarraySum(nums,k))
