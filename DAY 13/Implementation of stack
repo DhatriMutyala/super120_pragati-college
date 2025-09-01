@@ -1,0 +1,12 @@
+#implementation of stack
+stack = []
+arr = [1,4,3,2,6]
+stack.extend(arr) #pushing values to stack
+print(stack)
+
+for i in range(len(stack) + 1): #pop elements
+    if len(stack):
+        stack.pop()
+    else:
+        print("empty")
+
