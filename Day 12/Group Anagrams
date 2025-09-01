@@ -1,0 +1,13 @@
+#group anagrams
+def groupAnagrams(strs):
+    hashing = defaultdict(list) # creates a dictionary where each key maps to list by default
+    for sub_str in strs:
+        count = [0] * 26
+        for s in sub_str:
+            count[ord(s) - ord('a')] += 1
+        hashing[tuple(count)].append(sub_str) # hashing[key].append(value)
+    return list(hashing.values())
+strs = ["eat","tea","tan","ate","nat","bat"]
+print(groupAnagrams(strs))
+
+
