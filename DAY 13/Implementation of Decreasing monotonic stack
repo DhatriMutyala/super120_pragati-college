@@ -1,0 +1,10 @@
+#implementation of Decreasing monotonic stack
+a = [2,1,2,4,3]
+stack = []
+for i in a:
+    while stack and stack[-1] < i:
+        stack.pop()
+    stack.append(i)
+print(stack)
+
+
