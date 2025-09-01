@@ -1,0 +1,38 @@
+# Valid Sudoku Bruteforce
+board = [["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+def sudoku(board):
+    def not_safe(r,c,val):
+        #checking columns
+        for i in range(r+1,9):
+            if val == board[i][c]:
+                return True
+        #checking rows
+        for i in range(c+1,9):
+            if val == board[r][i]:
+                return True
+
+        #checking box 3 * 3
+        i , j = (r//3)*3 , (c//3)*3
+        for row in range(i,i+3):
+            for col in range(j,j+3):
+                if (row,col) != (r,c) and board[row][col] == board[r][c]:
+                    return True
+        return False
+
+
+
+    for r in range(9):
+        for c in range(9):
+            if board[r][c] != ".":
+                if not_safe(r,c,board[r][c]):
+                    return False
+    return True
+print(sudoku(board))
