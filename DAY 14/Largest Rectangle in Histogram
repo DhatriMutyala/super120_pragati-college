@@ -1,0 +1,17 @@
+# Largest Rectangle in Histogram (84 LC)
+def largestRectangleArea(heights):
+     stack = []
+     res = 0
+     for i, h in enumerate(heights):
+         s = i
+         while stack and stack[-1][1] > h:#cut the frequency bcz prev val is greater than cur 
+             index, height = stack.pop()
+             res = max(res, (i - index) * height)
+             s = index
+         res = max(res, h)
+         stack.append((s, h))
+     for i, h in stack:
+         res = max(res, (len(heights) - i) * h)
+     return res
+heights = [2,1,5,6,2,3]
+print(largestRectangleArea(heights))
