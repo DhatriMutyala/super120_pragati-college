@@ -1,0 +1,16 @@
+# LL insert to empty 
+class Node
+     def __init__(self):
+         self.data = data
+         self.next = None
+
+class Linkedlist:
+     def __init__(self):
+         self.head = None
+     def insert(self,data):#self == linkedlist1
+         newnode = Node(data)
+         if self.head is None:
+             self.head = newnode
+         
+Linkedlist_1 = Linkedlist()
+Linkedlist_1.insert(5)
