@@ -1,0 +1,18 @@
+# next greater element (496 LC)
+def nextmax(nums1, nums2):
+     hash_table = {}
+     for i, val in enumerate(nums1):
+         hash_table[val] = i
+     stack = []
+     res = [-1] * len(nums1)
+     for num in nums2:
+         while stack and stack[-1] < num: # greater number means then pop top until the number become less than some number then inser that greater number in stack 
+             temp = stack.pop()
+             res[hash_table[temp]] = num
+         if num in nums1:
+             stack.append(num)
+     return res
+nums1 = [4,1,2]
+nums2 = [1,3,4,2]
+print(nextmax(nums1,nums2))
+Next Greater 
