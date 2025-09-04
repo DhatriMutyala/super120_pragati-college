@@ -72,13 +72,20 @@ class Linkedlist:
 
 
 list1 = Linkedlist()
-list1.insert_end(5)
-
-list1.insert_end(6)
-# list1.insert(7)
-# list1.insert(8)
-list1.delete_end()
+for i in range(1,10):
+    list1.insert_end(i)
 list1.display()
+list1.delete_end()
+list1.delete_end()
+list1.delete_end()
+print()
+list1.display()
+
+
+
+
+
+
 
         
 
