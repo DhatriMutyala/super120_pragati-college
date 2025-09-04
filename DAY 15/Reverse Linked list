@@ -1,0 +1,12 @@
+# Reverse Linked list (206 LC)
+def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        cur = head
+        
+        while cur:
+            next_node = cur.next
+            cur.next = prev # head.next = prev
+            prev = cur # prev = head
+            cur = next_node # head = next_node
+        head = prev # instead of this write just (return prev) 
+        return head 
