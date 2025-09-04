@@ -1,0 +1,27 @@
+# Merge K Sorted Lists (23 LC)
+def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        if not lists or len(lists) < 1:
+            return None
+
+        def merge_twolist(l1,l2):
+            res = temp = ListNode(0)
+            while l1 and l2:
+                if l1.val < l2.val:
+                    temp.next = l1
+                    l1 = l1.next
+                else:
+                    temp.next = l2
+                    l2 = l2.next
+                temp = temp.next
+            temp.next = l1 or l2
+            return res.next
+        
+        while len(lists) > 1: 
+            merged_list = []
+            for i in range(0,len(lists),2):
+                l1 = lists[i]
+                l2 = lists[i+1] if (i+1)<len(lists) else None
+                merged_list.append(merge_twolist(l1,l2))
+            lists = merged_list
+        return lists[0]
+        
