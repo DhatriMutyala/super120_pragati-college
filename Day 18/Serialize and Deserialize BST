@@ -1,0 +1,42 @@
+# Serialize and Deserialize BST (449 LC)
+
+class Codec:
+
+    def serialize(self, root: Optional[TreeNode]) -> str:
+        """Encodes a tree to a single string.
+        """
+        ans = []
+        def preorder(root):
+            if root is None:
+                ans.append("N")
+                return
+            ans.append(str(root.val))
+            preorder(root.left)
+            preorder(root.right)
+        preorder(root)
+        return " ".join(ans)
+        
+
+    def deserialize(self, data: str) -> Optional[TreeNode]:
+        """Decodes your encoded data to tree.
+        """
+        data = data.split(" ")
+        self.i = 0
+        def pre_order():
+            if data[self.i] == "N":
+                self.i += 1
+                return None
+            root = TreeNode(int(data[self.i]))
+            self.i += 1
+            root.left = pre_order()
+            root.right = pre_order()
+            return root
+        return pre_order()
+
+# Your Codec object will be instantiated and called as such:
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# tree = ser.serialize(root)
+# ans = deser.deserialize(tree)
+# return ans
