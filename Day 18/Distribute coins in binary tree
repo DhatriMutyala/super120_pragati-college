@@ -1,0 +1,22 @@
+# Distribute coins in binary tree (979 LC)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def distributeCoins(self, root: Optional[TreeNode]) -> int:  
+        self.res = 0
+        def helper(root):
+            if root is None:
+                return 0
+            left_extra_coin = helper(root.left)
+            right_extra_coin = helper(root.right)
+            cal = left_extra_coin + right_extra_coin + (root.val - 1)
+            self.res += abs(cal)
+            return cal
+        helper(root)
+        return self.res
+
