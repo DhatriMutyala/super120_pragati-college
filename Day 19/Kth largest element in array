@@ -1,0 +1,13 @@
+# Kth largest element in array (215 LC) 
+  import heapq
+def findKthLargest(nums,k):
+    arr = []
+    for num in nums:
+        heapq.heappush(arr, num)
+        if len(arr) > k:
+            heapq.heappop(arr)
+    return arr[0]
+nums = [3,2,1,5,6,4]
+k = 2
+print(findKthLargest(nums,k))
+
