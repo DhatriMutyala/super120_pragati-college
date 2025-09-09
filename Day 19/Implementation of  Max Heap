@@ -1,0 +1,16 @@
+# Implementation of  Max Heap
+# consider every value as minus sign then
+# the largest number with minus sign will be small here
+# so that we can get max heap
+import heapq
+arr = [9,5,6,19,28,15]
+arr = [-i for i in arr]
+print(arr)
+heapq.heapify(arr) # making heap structure
+print(arr)
+heapq.heappush(arr,-2)#should insert in negative otherwise it will be positive
+print(arr)
+print(-heapq.heappop(arr)) # keep '-' for popped val
+print(arr)
+print(heapq.nsmallest(3,arr))#n is 3 so 3 top smallest in queue
+print(heapq.nlargest(3,arr))
