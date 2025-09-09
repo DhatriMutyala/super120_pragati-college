@@ -1,0 +1,14 @@
+# Top K Frequent elements (347 LC)
+import heapq
+import collections
+def topKFrequent(nums,k):
+    hash_t = collections.Counter(nums)
+    res = []
+    for val, count in hash_t.items():
+        heapq.heappush(res, (count, val))
+        if len(res) > k:
+            heapq.heappop(res)
+    return [val for count, val in res]
+nums = [1,1,1,2,2,3]
+k = 2
+print(topKFrequent(nums,k))
