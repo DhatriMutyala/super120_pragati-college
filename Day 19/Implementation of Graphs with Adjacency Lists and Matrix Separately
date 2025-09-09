@@ -1,0 +1,38 @@
+# Creating Graph using Adjacency List
+class Graph:
+    def __init__(self):
+        self.graph = {} # r :[k,p]
+    def insert(self,u,v):
+        for i in range(2):
+            if u in self.graph:
+                self.graph[u].append(v)
+            else:
+                self.graph[u] = [v]
+            u,v = v,u # above r to k added here k to r added
+
+obj = Graph()
+obj.insert("R","K")
+obj.insert("R","P")
+obj.insert("K","S")
+obj.insert("S","P")
+print(obj.graph)
+
+
+# Creating Graph using Adjacency Matrix
+class Graph:
+    def __init__(self,size):
+        self.graph = [[0] * size for i in range(size)]
+        self.dict = {"R":1,"K":0,"P":2,"S":3} # indices in marix
+    def insert(self,u,v):
+        u_index ,v_index = self.dict[u],self.dict[v]
+
+        self.graph[u_index][v_index] = 1
+        self.graph[v_index][u_index] = 1
+
+
+obj = Graph(4) # no of vertices
+obj.insert("R","K")
+obj.insert("R","P")
+obj.insert("K","S")
+obj.insert("S","P")
+print(obj.graph)
