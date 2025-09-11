@@ -1,0 +1,24 @@
+#BST Implementation
+# for displaying write code for traversals
+class Node:
+    def _init_(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+
+class BST:
+    def insert(self, root, data):
+        if root is None:
+            return Node(data)
+        if data < root.data:
+            root.left = self.insert(root.left, data)
+        else:
+            root.right = self.insert(root.right, data)
+        return root
+
+# Build the tree
+arr = [5, 3, 1, 4, 9, 7, 10, 11]
+obj = BST()
+root = None
+for n in arr:
+    root = obj.insert(root, n)
