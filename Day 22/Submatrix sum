@@ -1,0 +1,12 @@
+# submatrix sum
+n,m = map(int,input().split())
+matrix = [0] * n # if we do this we can directly assign to matrix
+for i in range(n):
+    matrix[i] = list(map(int,input().split()))
+    # row = list(map(int,input().split()));matrix.append(row)  if matrix = [] then we have to append
+i,j,k,l = map(int,input().split())
+sum1 = 0
+for p in range(i,k+1):
+    for s in range(j,l+1):
+        sum1 += matrix[p][s]
+print(sum1)
