@@ -1,0 +1,48 @@
+# BFS(Queue) using Adjacency List
+
+graph = {"A":["B","P"],
+         "B":["A","C","K"],
+         "P":["A","G"],
+         "C":["B","T"],
+         "K":["B","T"],
+         "T":["K","C"],
+         "G":["P"]
+}
+def bfs(graph,start):
+    visited = []
+    queue = [start]
+    while queue:
+        cur = queue.pop(0)
+        if cur not in visited:
+            visited.append(cur)
+            queue.extend(graph[cur])
+    print(visited)
+bfs(graph,"A")
+
+
+
+# BFS Using Adjacency Matrix
+graph =[[0,1,1,0],
+        [1,0,0,0],
+        [1,0,0,1],
+        [0,0,1,0]]
+dic = {"A":0,
+       "B":1,
+       "C":2,
+       "D":3
+}
+def bfs(graph,start):
+    visited = []
+    queue = [start]
+    while queue:
+        cur = queue.pop(0)
+        if cur not in visited:
+            visited.append(cur)
+            cur_index = dic[cur]
+            for v,i in dic.items():
+                if graph[cur_index][i] == 1:
+                    queue.append(v)
+    print(visited)
+bfs(graph,"A")
+
+
