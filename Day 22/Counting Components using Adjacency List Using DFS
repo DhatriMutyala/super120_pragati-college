@@ -1,0 +1,26 @@
+
+# Counting Components using Adjacency List Using DFS
+graph = {"A":["B","C"],
+         "B":["A"],
+         "C":["A"],
+         "D":[],
+         "E":["F"],
+         "F":["E"],
+}
+def ccs(graph):
+    visited = []
+    def dfs(start):
+        queue = [start]
+        while queue:
+            cur = queue.pop()
+            if cur not in visited:
+                visited.append(cur)
+                queue.extend(graph[cur])
+    count = 0
+    for v in graph.keys():
+        if v not in visited:
+            dfs(v)
+            count += 1
+
+    print(count)
+ccs(graph)
